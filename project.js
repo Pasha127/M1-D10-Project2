@@ -511,8 +511,7 @@ let searchByTitle = function (str,inputArray) {
     let outputArray = [];
     str = str.toLowerCase();
     let query = str.split(" ");
-    //console.log("debug - query", query);
-    let cantAdd = false;
+    //console.log("debug - query", query);   
     
     for(let i=0;i<query.length;i++){
         for(let j=0;j<inputArray.length;j++){
@@ -529,9 +528,7 @@ let searchByTitle = function (str,inputArray) {
                     //console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
                     if(outputArray.indexOf(inputArray[j].Title) === -1){
                         outputArray.push(inputArray[j].Title);
-
-                    }          
-                    
+                    }
                 }
             }
         }
@@ -550,31 +547,23 @@ let searchAndDivide = function (str,inputArray) {
     let outputArray2 = [];
     str = str.toLowerCase();
     let query = str.split(" ");
-    //console.log("debug - query", query);
-    let cantAdd = false;
+    
     
     for(let i=0;i<query.length;i++){
         for(let j=0;j<inputArray.length;j++){
             let searchableTitleArray =[];
             let searchableTitleStr = inputArray[j].Title;
-            searchableTitleStr = searchableTitleStr.toLowerCase();
-            //console.log(searchableTitleStr, `debug char`);
-            searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");
-            //console.log(searchableTitleStr, `debug noChar`);
-            searchableTitleArray = searchableTitleStr.split(" ");
-            //console.log(searchableTitleArray,"Debug");
+            searchableTitleStr = searchableTitleStr.toLowerCase();            
+            searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");            
+            searchableTitleArray = searchableTitleStr.split(" ");            
             for(let k=0;k<searchableTitleArray.length;k++){
-                if(query[i] === searchableTitleArray[k]){
-                    //console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
+                if(query[i] === searchableTitleArray[k]){                    
                     if(outputArray.indexOf(inputArray[j].Title) === -1){
                         outputArray.push(inputArray[j].Title);
-
-                    }          
-                    
+                    }
                 }else{
                     if(outputArray2.indexOf(inputArray[j].Title) === -1){
                         outputArray2.push(inputArray[j].Title);
-
                     }
                 }
             }
@@ -582,10 +571,15 @@ let searchAndDivide = function (str,inputArray) {
     }
     outputObj.match = outputArray;
     outputObj.unmatch = outputArray2;
-
     return outputObj;
 }
 console.log(`Search: "Lord rIngs": `, searchAndDivide("Lord rIngs",movies),`\n`);
 console.log(`Search: "thE oF": `, searchAndDivide("thE oF",movies),`\n`);
 console.log(`Search: "wAr flIes": `, searchAndDivide("wAr flIes",movies),`\n`);
 
+header("20");
+let removeIndex = function (n,inputArray) {    
+    inputArray.splice(n,1);
+    return inputArray;    
+}
+console.log(removeIndex(3,movies));
