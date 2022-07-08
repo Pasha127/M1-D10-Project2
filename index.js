@@ -198,9 +198,11 @@ Write a function called searchByTitle which receives a string as a parameter and
 
 /* EXERCISE 19
 
-Write a function called searchAndDivide which receives a string as a parameter and returns an object;
+Write a function called searchAndDivide which receives a 
+string as a parameter and returns an object;
 
-this object should contain an array called match, made by all the movies from the provided movies array which contain the given string in the title,
+this object should contain an array called match, made by all the movies from the provided
+ movies array which contain the given string in the title,
 
 and another array unmatch with all the remaining ones.
 
@@ -208,7 +210,8 @@ and another array unmatch with all the remaining ones.
 
 /* EXERCISE 20
 
-Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
+Write a function called "removeIndex" which receives a number as a 
+parameter and returns the provided movies array without the element in the given position.
 
 */
 
@@ -216,7 +219,8 @@ Write a function called "removeIndex" which receives a number as a parameter and
 
 /* EXERCISE 21
 
-Create a function called "halfTree" which receives a number as a parameter and builds an "*" half tree with the given height.
+Create a function called "halfTree" which receives a number as a parameter and 
+builds an "*" half tree with the given height.
 
 Example:
 
@@ -232,7 +236,8 @@ halfTree(3)
 
 /* EXERCISE 22
 
-Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
+Create a function called "tree" which receives a number as a parameter 
+and builds an "*" tree with the given height.
 
 Example:
 
@@ -248,17 +253,20 @@ tree(3)
 
 /* EXERCISE 23
 
-Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
+Create a function called "isItPrime" that receives a number as a 
+parameter and returns true if the given number is a prime number.
 
 */
 
 /* WHEN YOU ARE FINISHED
 
-Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today’s Eduflow.
+Commit and push the code to your personal GitHub repository; then 
+post the link of your commit on the Homework section of today’s Eduflow.
 
 */
 
-/* This movies array is used throughout the exercises. You’re not supposed to alter it. */
+/* This movies array is used throughout the exercises. You’re not 
+supposed to alter it. */
 
 const movies = [
 
