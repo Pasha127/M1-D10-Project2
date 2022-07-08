@@ -508,7 +508,7 @@ console.log(`Sum of years:`, sumAllTheYears(movies));
 
 header("18");
 let searchByTitle = function (str,a) {
-    let outputArray = ["placeholder"];
+    let outputArray = [];
     str = str.toLowerCase();
     let query = str.split(" ");
     //console.log("debug - query", query);
@@ -527,13 +527,18 @@ let searchByTitle = function (str,a) {
             for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){
                     console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
-                    //for(let l=0;l<outputArray.length;l++){
-                    //    if(a[j] === outputArray[l]){
-                    //        cantAdd = true;
-                    //    }                        
-                    //}
+                    //console.log(a[j].Title);                    
+                    outputArray.push(a[j].Title);
+                    //console.log(outputArray);
+                    for(let l=0;l<outputArray.length;l++){
+                        console.log(outputArray,`debug 01`);
+                        if(a[j].Title === outputArray[l]){
+                            outputArray.pop();
+                            console.log(outputArray,`debug 02`);
+                        }                        
+                    }
                     //if(cantAdd = false){                            
-                    //    outputArray.push(a[j]);
+                    //    outputArray.push(a[j].Title);
                     //    console.log(outputArray);                            
                     //}
                     //cantAdd=false; 
@@ -544,7 +549,7 @@ let searchByTitle = function (str,a) {
             }
         }
     }
-    outputArray.shift();
+    //outputArray.shift();
     return outputArray;
 }
 
