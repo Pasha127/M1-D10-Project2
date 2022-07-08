@@ -583,3 +583,42 @@ let removeIndex = function (n,inputArray) {
     return inputArray;    
 }
 console.log(removeIndex(3,movies));
+
+header("21");
+let halfTree = function (n){
+    str = `*`;
+    for(let i=0;i<n;i++){
+        console.log(str.repeat(i+1),`\n`);
+                
+    }
+}
+halfTree(6);
+
+header("22");
+let tree = function (n) {
+    str = `*`;
+    for(let i=0;i<n*2;i++){
+        if(i%2===0){
+            console.log(str.repeat(i+1),`\n`);
+        }
+    }
+}
+tree(6);    
+
+header("23");
+let isItPrime = function (n) {
+    let sqrtnum=Math.floor(Math.sqrt(n));
+    let prime= n != 1;
+    for(let i=2; i<sqrtnum + 1; i++){
+        if(n % i === 0){
+            prime = false;
+            break;
+        }
+    }
+    return prime;
+}
+let primeTestInt = 11
+console.log(`Is ${primeTestInt} prime?: `, isItPrime(11));
+
+
+
