@@ -22,7 +22,7 @@ ASSIGNMENT RULES
 
 Create a variable called test and assign a string value to it.
 
-*/
+
 
 /* EXERCISE B
 
