@@ -478,4 +478,71 @@ let onlyInThisMillennium = function (a) {
 }
 console.log(`Movies from this millenium:`, onlyInThisMillennium(movies));
 
-header("16")
+header("16");
+let getMovieById = function (idStr,a) {
+    let output = null;
+    for(i=0;i<a.length;i++){
+        if(a[i].imdbID === idStr){
+            output = a[i];
+            break;            
+        }
+    }
+    return output;
+}
+let movieId01 = "tt0167260";
+let movieId02 = "tt0100054";
+
+console.log(`Desired movie ID: ${movieId01}:`, getMovieById(movieId01,movies));
+console.log(`Desired movie ID: ${movieId02}:`, getMovieById(movieId02,movies));
+
+header("17");
+let sumAllTheYears = function (a) {
+    let yearSum = 0;
+    for(i=0;i<a.length;i++){
+        yearSum += parseInt(a[i].Year);
+        //console.log(yearSum);
+    }
+    return yearSum;
+}
+console.log(`Sum of years:`, sumAllTheYears(movies));
+
+header("18");
+let searchByTitle = function (str,a) {
+    let outputArray = ["placeholder"];
+    str = str.toLowerCase();
+    let query = str.split(" ");
+    //console.log("debug - query", query);
+    let cantAdd = false;
+    
+    for(i=0;i<query.length;i++){
+        for(j=0;j<a.length;j++){
+            let searchableTitleArray =[];
+            let searchableTitleStr = a[j].Title;
+            searchableTitleStr = searchableTitleStr.toLowerCase();
+            //console.log(searchableTitleStr, `debug char`);
+            searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");
+            //console.log(searchableTitleStr, `debug noChar`);
+            searchableTitleArray = searchableTitleStr.split(" ");
+            //console.log(searchableTitleArray,"Debug");
+            for(k=0;k<searchableTitleArray.length;k++){
+                if(query[i] === searchableTitleArray[k]){
+                    console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
+                    for(l=0;l<outputArray.length;l++){
+                        if(a[j] === outputArray[l]){
+                            cantAdd = true;
+                        }                        
+                    }
+                    if(cantAdd = false){                            
+                        outputArray.push(a[j]);
+                        console.log(outputArray);                            
+                    }
+                    cantAdd=false;  
+                }
+            }
+        }
+    }
+    outputArray.shift();
+    return outputArray;
+}
+
+console.log(`Search: "Lord rings": `, searchByTitle("Lord rings",movies));
