@@ -319,7 +319,7 @@ let isThisAnEmail = function (str) {
     let hasDomain = false;
     let domainArr = []; 
     let domainStr = "";
-    for(i=0;i<newArr.length;i++){
+    for(let i=0;i<newArr.length;i++){
         if(newArr[i] === "@"){
             hasAt = true;            
             break;
@@ -387,7 +387,7 @@ header('08');
 let rollTheDices = function (n){
     let rollArr = [];
     let sum = 0;
-    for(i=0;i<n;i++){
+    for(let i=0;i<n;i++){
         let roll = dice()
         sum += roll;
         rollArr[i] = roll;
@@ -433,7 +433,7 @@ header("12");
 let oldestMovie = function (a){
     let earliestYear = Infinity;   
     let oldMovieLocation = 0;
-    for(i=0;i<a.length;i++){        
+    for(let i=0;i<a.length;i++){        
         let thatYear = parseInt(a[i].Year);
         if(thatYear < earliestYear){
             earliestYear = thatYear;
@@ -457,7 +457,7 @@ console.log(`Number of movies:`,countMovies(movies))
 header("14");
 let onlyTheTitles = function (a) {
     let newTitleArr = [];
-    for(i=0;i<a.length;i++){
+    for(let i=0;i<a.length;i++){
         newTitleArr.push(a[i].Title);
     }
     return newTitleArr;
@@ -467,7 +467,7 @@ console.log(`Just the titles:`, onlyTheTitles(movies));
 header("15");
 let onlyInThisMillennium = function (a) {
     let newMovieArr = [];
-    for(i=0;i<a.length;i++){        
+    for(let i=0;i<a.length;i++){        
         let thatYear = parseInt(a[i].Year);
         if(thatYear > 1999){
             newMovieArr.push(a[i]);
@@ -481,7 +481,7 @@ console.log(`Movies from this millenium:`, onlyInThisMillennium(movies));
 header("16");
 let getMovieById = function (idStr,a) {
     let output = null;
-    for(i=0;i<a.length;i++){
+    for(let i=0;i<a.length;i++){
         if(a[i].imdbID === idStr){
             output = a[i];
             break;            
@@ -498,7 +498,7 @@ console.log(`Desired movie ID: ${movieId02}:`, getMovieById(movieId02,movies));
 header("17");
 let sumAllTheYears = function (a) {
     let yearSum = 0;
-    for(i=0;i<a.length;i++){
+    for(let i=0;i<a.length;i++){
         yearSum += parseInt(a[i].Year);
         //console.log(yearSum);
     }
@@ -514,8 +514,8 @@ let searchByTitle = function (str,a) {
     //console.log("debug - query", query);
     let cantAdd = false;
     
-    for(i=0;i<query.length;i++){
-        for(j=0;j<a.length;j++){
+    for(let i=0;i<query.length;i++){
+        for(let j=0;j<a.length;j++){
             let searchableTitleArray =[];
             let searchableTitleStr = a[j].Title;
             searchableTitleStr = searchableTitleStr.toLowerCase();
@@ -524,19 +524,22 @@ let searchByTitle = function (str,a) {
             //console.log(searchableTitleStr, `debug noChar`);
             searchableTitleArray = searchableTitleStr.split(" ");
             //console.log(searchableTitleArray,"Debug");
-            for(k=0;k<searchableTitleArray.length;k++){
+            for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){
                     console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
-                    for(l=0;l<outputArray.length;l++){
-                        if(a[j] === outputArray[l]){
-                            cantAdd = true;
-                        }                        
-                    }
-                    if(cantAdd = false){                            
-                        outputArray.push(a[j]);
-                        console.log(outputArray);                            
-                    }
-                    cantAdd=false;  
+                    //for(let l=0;l<outputArray.length;l++){
+                    //    if(a[j] === outputArray[l]){
+                    //        cantAdd = true;
+                    //    }                        
+                    //}
+                    //if(cantAdd = false){                            
+                    //    outputArray.push(a[j]);
+                    //    console.log(outputArray);                            
+                    //}
+                    //cantAdd=false; 
+                    
+                    
+                    //console.log(a[j]); 
                 }
             }
         }
