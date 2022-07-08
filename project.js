@@ -526,31 +526,18 @@ let searchByTitle = function (str,a) {
             //console.log(searchableTitleArray,"Debug");
             for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){
-                    console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
-                    //console.log(a[j].Title);                    
-                    outputArray.push(a[j].Title);
-                    //console.log(outputArray);
-                    for(let l=0;l<outputArray.length;l++){
-                        console.log(outputArray,`debug 01`);
-                        if(a[j].Title === outputArray[l]){
-                            outputArray.pop();
-                            console.log(outputArray,`debug 02`);
-                        }                        
-                    }
-                    //if(cantAdd = false){                            
-                    //    outputArray.push(a[j].Title);
-                    //    console.log(outputArray);                            
-                    //}
-                    //cantAdd=false; 
+                    //console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
+                    if(outputArray.indexOf(a[j].Title) === -1){
+                        outputArray.push(a[j].Title);
+                    }          
                     
-                    
-                    //console.log(a[j]); 
                 }
             }
         }
-    }
-    //outputArray.shift();
+    }    
     return outputArray;
 }
 
-console.log(`Search: "Lord rings": `, searchByTitle("Lord rings",movies));
+console.log(`Search: "Lord rIngs": `, searchByTitle("Lord rIngs",movies),`\n`);
+console.log(`Search: "thE oF": `, searchByTitle("thE oF",movies),`\n`);
+console.log(`Search: "wAr flIes": `, searchByTitle("wAr flIes",movies),`\n`);
