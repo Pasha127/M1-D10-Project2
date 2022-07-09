@@ -544,9 +544,10 @@ header("19");
 let searchAndDivide = function (str,inputArray) {
     let outputObj = {match:[],unmatch:[]};
     let outputArray = [];
-    let outputArray2 = [];
+    let outputArray2 = inputArray;
     str = str.toLowerCase();
     let query = str.split(" ");
+    
     
     
     for(let i=0;i<query.length;i++){
@@ -556,14 +557,17 @@ let searchAndDivide = function (str,inputArray) {
             searchableTitleStr = searchableTitleStr.toLowerCase();            
             searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");            
             searchableTitleArray = searchableTitleStr.split(" ");            
+            //setup loop for unmatch
+            let unmatchArr = []
+            for(let k=0;k<inputArray.length;k++){
+                unmatchArr.push(inputArray[j].Title);
+                console.log(`unmatch array:`, unmatchArr);
+            }
+            //loop for writing match
             for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){                    
                     if(outputArray.indexOf(inputArray[j].Title) === -1){
                         outputArray.push(inputArray[j].Title);
-                    }
-                }else{
-                    if(outputArray2.indexOf(inputArray[j].Title) === -1){
-                        outputArray2.push(inputArray[j].Title);
                     }
                 }
             }
