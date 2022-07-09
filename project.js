@@ -511,21 +511,24 @@ let searchByTitle = function (str,inputArray) {
     let outputArray = [];
     str = str.toLowerCase();
     let query = str.split(" ");
-    //console.log("debug - query", query);   
+                                                                    //console.log("debug - query", query);   
     
+    //making data more searchable
     for(let i=0;i<query.length;i++){
         for(let j=0;j<inputArray.length;j++){
             let searchableTitleArray =[];
             let searchableTitleStr = inputArray[j].Title;
             searchableTitleStr = searchableTitleStr.toLowerCase();
-            //console.log(searchableTitleStr, `debug char`);
+                                                                    //console.log(searchableTitleStr, `debug char`);
             searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");
-            //console.log(searchableTitleStr, `debug noChar`);
+                                                                    //console.log(searchableTitleStr, `debug noChar`);
             searchableTitleArray = searchableTitleStr.split(" ");
-            //console.log(searchableTitleArray,"Debug");
+                                                                    //console.log(searchableTitleArray,"Debug");
+            
+            //loop to write
             for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){
-                    //console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
+                                                                    //console.log(`${query[i]} matching word ${searchableTitleArray[k]}`);
                     if(outputArray.indexOf(inputArray[j].Title) === -1){
                         outputArray.push(inputArray[j].Title);
                     }
@@ -540,16 +543,23 @@ console.log(`Search: "Lord rIngs": `, searchByTitle("Lord rIngs",movies),`\n`);
 console.log(`Search: "thE oF": `, searchByTitle("thE oF",movies),`\n`);
 console.log(`Search: "wAr flIes": `, searchByTitle("wAr flIes",movies),`\n`);
 
+
+
+
 header("19");
 let searchAndDivide = function (str,inputArray) {
     let outputObj = {match:[],unmatch:[]};
-    let outputArray = [];
-    let outputArray2 = inputArray;
+    let outputArray = [];    
     str = str.toLowerCase();
     let query = str.split(" ");
-    
-    
-    
+
+
+    //writing list to unmatch from
+    for(let i=0;i<inputArray.length;i++){
+        outputObj.unmatch.push(inputArray[i].Title);
+    }
+
+    //making data more searchable
     for(let i=0;i<query.length;i++){
         for(let j=0;j<inputArray.length;j++){
             let searchableTitleArray =[];
@@ -557,12 +567,7 @@ let searchAndDivide = function (str,inputArray) {
             searchableTitleStr = searchableTitleStr.toLowerCase();            
             searchableTitleStr = searchableTitleStr.replace(/[^a-z ]/gm,"");            
             searchableTitleArray = searchableTitleStr.split(" ");            
-            //setup loop for unmatch
-            let unmatchArr = []
-            for(let k=0;k<inputArray.length;k++){
-                unmatchArr.push(inputArray[j].Title);
-                console.log(`unmatch array:`, unmatchArr);
-            }
+            
             //loop for writing match
             for(let k=0;k<searchableTitleArray.length;k++){
                 if(query[i] === searchableTitleArray[k]){                    
@@ -571,15 +576,28 @@ let searchAndDivide = function (str,inputArray) {
                     }
                 }
             }
+            
         }
     }
-    outputObj.match = outputArray;
-    outputObj.unmatch = outputArray2;
-    return outputObj;
+
+    //unmatch
+    for(let i=0;i<outputArray.length;i++){
+        for(let j=0;j<outputObj.unmatch.length;j++){
+            if(outputArray[i] === outputObj.unmatch[j]){
+                outputObj.unmatch.splice(j,1);
+            }
+        }
+    }
+    //output
+    outputObj.match = outputArray 
+    return outputObj
 }
+
 console.log(`Search: "Lord rIngs": `, searchAndDivide("Lord rIngs",movies),`\n`);
 console.log(`Search: "thE oF": `, searchAndDivide("thE oF",movies),`\n`);
 console.log(`Search: "wAr flIes": `, searchAndDivide("wAr flIes",movies),`\n`);
+
+
 
 header("20");
 let removeIndex = function (n,inputArray) {    
